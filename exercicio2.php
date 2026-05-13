@@ -1,88 +1,78 @@
 <?php
 
-class Aluno{
-    private $nome;
-    private $nota1;
-    private $nota2;
+class Calculadora{
+    private $numA;
+    private $numB;
 
-    public function mediaAluno(){
-
-        $media = "A media do(a) " . $this->nome . " é " . ($this->nota1 + $this->nota2) / 2 . "\n";
-        return $media;
+    public function soma(){
+        $somando = $this->numA + $this->numB;
+        return $somando;
     }
-
     
+    public function subtracao(){
+        $subtraindo = $this->numA - $this->numB;
+        return $subtraindo;
+    }
 
-    /**
-     * Get the value of nome
-     */
-    public function getNome()
-    {
-        return $this->nome;
+    public function multiplicacao(){
+        $multiplicando = $this->numA * $this->numB;
+        return $multiplicando;
+    }
+
+    public function divisao(){
+        $dividindo = $this->numA / $this->numB;
+        return $dividindo;
+    }
+
+    public function resto(){
+        $restou = $this->numA % $this->numB;
+        return $restou;
     }
 
     /**
-     * Set the value of nome
+     * Get the value of numA
      */
-    public function setNome($nome): self
+    public function getNumA()
     {
-        $this->nome = $nome;
+        return $this->numA;
+    }
+
+    /**
+     * Set the value of numA
+     */
+    public function setNumA($numA): self
+    {
+        $this->numA = $numA;
 
         return $this;
     }
 
     /**
-     * Get the value of nota1
+     * Get the value of numB
      */
-    public function getNota1()
+    public function getNumB()
     {
-        return $this->nota1;
+        return $this->numB;
     }
 
     /**
-     * Set the value of nota1
+     * Set the value of numB
      */
-    public function setNota1($nota1): self
+    public function setNumB($numB): self
     {
-        $this->nota1 = $nota1;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of nota2
-     */
-    public function getNota2()
-    {
-        return $this->nota2;
-    }
-
-    /**
-     * Set the value of nota2
-     */
-    public function setNota2($nota2): self
-    {
-        $this->nota2 = $nota2;
+        $this->numB = $numB;
 
         return $this;
     }
 }
 
-$aluno1 = new Aluno();
-$aluno1->setNome(readline("Informe seu nome: "));
-$aluno1->setNota1(readline("Informe sua primeira nota: "));
-$aluno1->setNota2(readline("Informe sua segunda nota: "));
+$calcu = new Calculadora();
+$calcu->setNumA((int)readline("Informe o primeiro numero: "));
+$calcu->setNumB((int)readline("Informe o segundo numero: "));
 
-$aluno2 = new Aluno();
-$aluno2->setNome(readline("Informe seu nome: "));
-$aluno2->setNota1(readline("Informe sua primeira nota: "));
-$aluno2->setNota2(readline("Informe sua segunda nota: "));
-
-$aluno3 = new Aluno();
-$aluno3->setNome(readline("Informe seu nome: "));
-$aluno3->setNota1(readline("Informe sua primeira nota: "));
-$aluno3->setNota2(readline("Informe sua segunda nota: "));
-
-print($aluno1->mediaAluno());
-print($aluno2->mediaAluno());
-print($aluno3->mediaAluno());
+print("Os numeros lidos foram: " . $calcu->getNumA() . " e " . $calcu->getNumB() . "\n");
+print("Soma: " . $calcu->soma() . "\n");
+print("Subtração: " . $calcu->subtracao() . "\n");
+print("Multiplicação: " . $calcu->multiplicacao() . "\n");
+print("Divisão: " . $calcu->divisao() . "\n");
+print("Resto: " . $calcu->resto() . "\n");

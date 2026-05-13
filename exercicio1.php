@@ -1,125 +1,132 @@
 <?php
 
-class Pessoa{
-    private $nome;
-    private $endereco;
-    private $cidade;
-    private $uf;
-    private $altura;
+class Carro{
+    private $modelo;
+    private $marca;
+    private $anoFabricacao;
+    private $velocidadeMax;
 
-    public function retornaApresentacao(){
-        $dados = "Ola mundo, sou " . $this->nome;
-        $dados .= " resido no endereco " . $this->endereco . "; " . $this->cidade . "; " . $this->uf;
-        $dados .= " e possuo uma altura de " . $this->altura . ".\n";
+
+    public function __toString(){
+        $dados = $this->getModelo() . " - " . $this->getMarca() . ", ";
+        $dados .= "fabricado em " . $this->getAnoFabricacao() . ", ";
+        $dados .= "com velocidade maxima de " . $this->getVelocidadeMax() . "km/h.\n\n";
         return $dados;
     }
 
     /**
-     * Get the value of nome
+     * Get the value of modelo
      */
-    public function getNome()
+    public function getModelo()
     {
-        return $this->nome;
+        return $this->modelo;
     }
 
     /**
-     * Set the value of nome
+     * Set the value of modelo
      */
-    public function setNome($nome): self
+    public function setModelo($modelo): self
     {
-        $this->nome = $nome;
+        $this->modelo = $modelo;
 
         return $this;
     }
 
     /**
-     * Get the value of endereco
+     * Get the value of marca
      */
-    public function getEndereco()
+    public function getMarca()
     {
-        return $this->endereco;
+        return $this->marca;
     }
 
     /**
-     * Set the value of endereco
+     * Set the value of marca
      */
-    public function setEndereco($endereco): self
+    public function setMarca($marca): self
     {
-        $this->endereco = $endereco;
+        $this->marca = $marca;
 
         return $this;
     }
 
     /**
-     * Get the value of cidade
+     * Get the value of anoFabricacao
      */
-    public function getCidade()
+    public function getAnoFabricacao()
     {
-        return $this->cidade;
+        return $this->anoFabricacao;
     }
 
     /**
-     * Set the value of cidade
+     * Set the value of anoFabricacao
      */
-    public function setCidade($cidade): self
+    public function setAnoFabricacao($anoFabricacao): self
     {
-        $this->cidade = $cidade;
+        $this->anoFabricacao = $anoFabricacao;
 
         return $this;
     }
 
     /**
-     * Get the value of uf
+     * Get the value of velocidadeMax
      */
-    public function getUf()
+    public function getVelocidadeMax()
     {
-        return $this->uf;
+        return $this->velocidadeMax;
     }
 
     /**
-     * Set the value of uf
+     * Set the value of velocidadeMax
      */
-    public function setUf($uf): self
+    public function setVelocidadeMax($velocidadeMax): self
     {
-        $this->uf = $uf;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of altura
-     */
-    public function getAltura()
-    {
-        return $this->altura;
-    }
-
-    /**
-     * Set the value of altura
-     */
-    public function setAltura($altura): self
-    {
-        $this->altura = $altura;
+        $this->velocidadeMax = $velocidadeMax;
 
         return $this;
     }
 }
 
-$pessoa = new Pessoa();
+$carro1 = new Carro();
+$carro1->setModelo(readline("informe o modelo do carro: "));
+$carro1->setMarca(readline("informe a marca do carro: "));
+$carro1->setAnoFabricacao(readline("informe o ano de fabricaçao do carro: "));
+$carro1->setVelocidadeMax(readline("informe a velocidade do carro: "));
 
-$pessoa->setNome(readline("Informe seu nome: "));
-$pessoa->setEndereco(readline("Informe seu endereço: "));
-$pessoa->setCidade(readline("Informe a sua cidade: "));
-$pessoa->setUf(readline("Informe seu UF: "));
-$pessoa->setAltura(readline("Informe sua altura: "));
+$carro2 = new Carro();
+$carro2->setModelo(readline("informe o modelo do carro: "));
+$carro2->setMarca(readline("informe a marca do carro: "));
+$carro2->setAnoFabricacao(readline("informe o ano de fabricaçao do carro: "));
+$carro2->setVelocidadeMax(readline("informe a velocidade do carro: "));
 
-$pessoa2 = new Pessoa();
+$carro3 = new Carro();
+$carro3->setModelo(readline("informe o modelo do carro: "));
+$carro3->setMarca(readline("informe a marca do carro: "));
+$carro3->setAnoFabricacao(readline("informe o ano de fabricaçao do carro: "));
+$carro3->setVelocidadeMax(readline("informe a velocidade do carro: "));
 
-$pessoa2->setNome(readline("Informe seu nome: "));
-$pessoa2->setEndereco(readline("Informe seu endereço: "));
-$pessoa2->setCidade(readline("Informe a sua cidade: "));
-$pessoa2->setUf(readline("Informe seu UF: "));
-$pessoa2->setAltura(readline("Informe sua altura: "));
+$carroMaisRapido = $carro1;
 
-print($pessoa->retornaApresentacao());
-print($pessoa2->retornaApresentacao());
+if ($carro2->getVelocidadeMax() > $carroMaisRapido->getVelocidadeMax()) {
+    $carroMaisRapido = $carro2;
+}
+
+if ($carro3->getVelocidadeMax() > $carroMaisRapido->getVelocidadeMax()) {
+    $carroMaisRapido = $carro3;
+}
+
+
+$carroMenosRapido = $carro1;
+
+if ($carro2->getVelocidadeMax() < $carroMenosRapido->getVelocidadeMax()) {
+    $carroMenosRapido = $carro2;
+}
+
+if ($carro3->getVelocidadeMax() < $carroMenosRapido->getVelocidadeMax()) {
+    $carroMenosRapido = $carro3;
+}
+
+print("O carro mais rapido é: " . $carroMaisRapido);
+
+print("O carro mais lento é: " . $carroMenosRapido);
+
