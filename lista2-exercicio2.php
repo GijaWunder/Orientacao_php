@@ -18,8 +18,6 @@ class Livro{
         return $dados;
     }
 
-    
-
         /**
      * Get the value of titulo
      */
@@ -121,7 +119,7 @@ do{
     print "1-Inserir livro\n";
     print "2-Listar livros\n";
     print "3-Buscar livro\n";
-    print "2-Total gasto\n";
+    print "4-Total gasto\n";
     print "0-Sair\n";
 
     $opcao = readline("Informe a opcao:");
@@ -136,6 +134,7 @@ do{
             $li->setAutor(readline("Informe o autor do livro: "));
             $li->setQuantidadePg(readline("Informe a quantidade de paginas do livro:"));
             $li->setValotPago(readline("Informe o valor do livro:"));
+
             array_push($livros, $li);
             
             break;
@@ -152,17 +151,24 @@ do{
 
         case 3:
             $liv = readline("Qual livro voce deseja buscar? (digite o indice do livro) ");
-            foreach ($livros as $l) {
-                print $l[$liv];
+
+            if ($liv >= 0 && $liv < count($livros)) {
+                print $livros[$liv];
+
+            }else{
+                print("a posicao informada nao existe!");
             }
-
-            //continuar se tem ou nao
-
+        
         break;
 
         case 4:
             $totalPago = 0;
-            print "\nTotal Gasto na compra dos livros: " . $totalPago += $li->getValotPago() . "\n";
+
+            foreach ($livros as $l) {
+                $totalPago += $l->getValotPago();
+            }
+
+            printf("valor a ser pago é: R$ %.2f\n", $totalPago);
 
         break;
         
