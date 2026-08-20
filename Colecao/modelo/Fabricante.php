@@ -4,6 +4,11 @@ class Fabricante{
     private string $nome;
     private string $sigla;
 
+    public function __toString(){
+        $dados = $this->nome . " - " . $this->sigla;
+        return $dados;
+    }
+
 
     /**
      * Get the value of nome

@@ -28,7 +28,7 @@ array_push($fabri, $fa4);
 $cole = array();
 
 do{
-    print "\n\n******Cadastro do Carro******\n\n";
+    print "\n******Cadastro do Carro******\n\n";
     print "1-Cadastrar Carro\n";
     print "2-Excluir Carro\n";
     print "3-Listar Carro\n";
@@ -42,7 +42,7 @@ do{
             
             $ca = new Carro();
             $ca->setModelo(readline("Informe o modelo do carro: "));
-            $ca->setAnoFabricacao(readline("Informe o ano de fabricacao do carro: "));
+            $ca->setAnoFabricacao((int) readline("Informe o ano de fabricacao do carro: "));
 
             $sigla = readline("Informe a sigla do fabricante (VW, GM, F ou RN): ");
 
@@ -59,15 +59,16 @@ do{
         case 2:
             print "\nExcluindo...\n";
 
-            //$at = readline("Informe o cadastro do atleta que deseja excluir (digite o indice do livro) ");
+            print "Informe o cadastro do carro que deseja excluir (digite o indice do carro): ";
+            $car = readline();
 
-            //if ($at >= 0 && $at < count($atletas)) {
-                //array_splice($atletas, $at, 1);
-                //print"Exclusao concluiada!";
+            if ($car >= 0 && $car < count($cole)) {
+                array_splice($cole, $car, 1);
+                print"\nExclusao concluiada!\n";
 
-            //}else{
-                //print("O cadastro informado nao existe!");
-            //}
+            }else{
+                print("O cadastro informado nao existe!\n");
+            }
 
         break;
 
@@ -75,7 +76,7 @@ do{
             print "\nListando...\n";
 
             foreach($cole as $c){
-                print $c->getModelo() . " | " . $c->getAnoFabricacao() . " | " . $c->getFabricante()->getNome() . " | " . $c->getFabricante()->getSigla() . "\n";
+                print $c->getModelo() . " | " . $c->getAnoFabricacao() . " | " . $c->getFabricante() . "\n";
             }
 
         break;
