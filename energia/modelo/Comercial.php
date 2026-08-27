@@ -8,7 +8,7 @@ class Comercial implements IConsumidor{
     public function getValorFatura(){
         if ($this->consumo <= 100) {
             return $this->consumo * 1.45;
-        }else{
+        }else{ //else é opcional
             $excedeu = ($this->consumo - 100) * 1.60;
             $cem = 100 * 1.45;
 
